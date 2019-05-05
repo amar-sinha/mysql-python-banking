@@ -1,5 +1,5 @@
 --
--- Database: cse4701s19_project2
+-- Database: mysql_python_banking
 --
 CREATE DATABASE IF NOT EXISTS mysql_python_banking;
 USE mysql_python_banking;
