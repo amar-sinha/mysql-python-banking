@@ -19,7 +19,9 @@ Install wxpython
 
     $ pip install wxPython
 
-### <u>MySQL User Specifications</u>
+### <u>MySQL Specifications</u>
+Download the open source MySQL Community Server here: <a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a>
+
 To ensure the program executes with no errors, make sure that the MySQL user specifications (user name, password, host, database name) in the Python program are correct. These specifications can be found at the top of the program, and look as such:
 
     cnx = mysql.connector.connect(user='root', password='pwd', host='localhost', database='db_name')
