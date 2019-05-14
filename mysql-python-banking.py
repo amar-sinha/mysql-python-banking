@@ -80,8 +80,10 @@ def makeWithdrawal(curBal, wdrAmt, acctNo, actDtlsTxt, tfr):
             else: actDtlsTxt.SetLabelText(lblTxt)
         else:
             actDtlsTxt.SetLabelText("Invalid query result.")
+            return -1
     else:
         actDtlsTxt.SetLabelText("Balance is insufficient for withdrawal in account.")
+        return -1
 
 
 class panelMain(wx.Panel):
@@ -362,11 +364,14 @@ class panelTfr(wx.Panel):
             self.amtTfr.Hide()
 
     def onTfrPress(self, event):
-        makeWithdrawal(self.srcCurBal, self.amtTfr, self.srcAcctNo, self.srcActDtls, 1)
-        time.sleep(10)
-        makeDeposit(self.tgtCurBal, self.amtTfr, self.tgtAcctNo, self.tgtActDtls, 1)
-        time.sleep(10)
-        cnx.commit()
+        withdraw = makeWithdrawal(self.srcCurBal, self.amtTfr, self.srcAcctNo, self.srcActDtls, 1)
+        if (withdraw != -1):
+            time.sleep(10)
+            makeDeposit(self.tgtCurBal, self.amtTfr, self.tgtAcctNo, self.tgtActDtls, 1)
+            time.sleep(10)
+            cnx.commit()
+        else:
+            print('error')
 
 
 class Program(wx.Frame):
